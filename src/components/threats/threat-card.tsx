@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
+import Image from "next/image";
 
 import { cn } from "@/utils/cn";
 import type { ThreatCard as ThreatCardData } from "@/types/site";
@@ -19,9 +20,12 @@ export function ThreatCard({ threat }: ThreatCardProps) {
 
   if (prefersReducedMotion) {
     return (
-      <article className={cyberPanelClasses("group relative overflow-hidden p-6 shadow-[0_0_40px_rgba(15,23,42,0.35)]")}>
+      <article className={cyberPanelClasses("group relative overflow-hidden shadow-[0_0_40px_rgba(15,23,42,0.35)]")}>
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <Image src={`/courses/${threat.slug}/hero.webp`} alt={`Illustration for ${threat.name}`} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover" />
+        </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(217,70,239,0.12),transparent_30%)] opacity-0 transition duration-300 group-hover:opacity-100" />
-        <div className="relative flex h-full flex-col">
+        <div className="relative flex h-full flex-col p-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-slate-950/70 text-xl shadow-[0_0_20px_rgba(34,211,238,0.12)]">
@@ -66,13 +70,16 @@ export function ThreatCard({ threat }: ThreatCardProps) {
 
   return (
     <article
-      className={cyberPanelClasses("group relative overflow-hidden p-6 shadow-[0_0_40px_rgba(15,23,42,0.35)]")}
+      className={cyberPanelClasses("group relative overflow-hidden shadow-[0_0_40px_rgba(15,23,42,0.35)]")}
       style={{ perspective: tilt.perspective, transformStyle: "preserve-3d", transition: "transform 0.12s ease-out" }}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
     >
+      <div className="relative aspect-[16/9] overflow-hidden">
+        <Image src={`/courses/${threat.slug}/hero.webp`} alt={`Illustration for ${threat.name}`} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover transition duration-500 group-hover:scale-105" />
+      </div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(217,70,239,0.12),transparent_30%)] opacity-0 transition duration-300 group-hover:opacity-100" />
-      <div className="relative flex h-full flex-col">
+      <div className="relative flex h-full flex-col p-6">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-slate-950/70 text-xl shadow-[0_0_20px_rgba(34,211,238,0.12)]">
